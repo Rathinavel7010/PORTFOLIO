@@ -3,83 +3,162 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rathinavel | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
+
   <style>
-    * {
-      box-sizing: border-box;
-      padding: 0;
-      margin: 0;
-      font-family: 'Outfit', sans-serif;
-      scroll-behavior: smooth;
+    :root {
+      --blue1: #39e9ff;
+      --blue2: #746cff;
+      --bg-light: #f5f8ff;
+      --bg-dark: #101020;
+      --text-light: #222;
+      --text-dark: #eee;
+      --card-bg-light: rgba(255 255 255 / 0.6);
+      --card-bg-dark: rgba(30 40 80 / 0.39);
+      --shadow-light: rgba(0 0 0 / 0.1);
+      --shadow-dark: rgba(60 98 255 / 0.13);
+      --input-bg-light: rgba(255 255 255 / 0.9);
+      --input-bg-dark: rgba(40 50 80 / 0.14);
     }
 
+    /* Dark mode by default */
     body {
-      background: #0f0f0f;
-      color: #f5f5f5;
+      background: linear-gradient(120deg, var(--bg-dark) 0%, #222 100%);
+      color: var(--text-dark);
+      min-height: 100vh;
+      font-family: 'Outfit', sans-serif;
+      position: relative;
       overflow-x: hidden;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    body.light {
+      background: var(--bg-light);
+      color: var(--text-light);
     }
 
     nav {
+      background: rgba(12, 16, 35, 0.7);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.17);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
       position: sticky;
       top: 0;
       z-index: 1000;
+      transition: background 0.5s;
+    }
+
+    body.light nav {
+      background: rgba(255 255 255 / 0.9);
+      box-shadow: 0 2px 12px var(--shadow-light);
+      border-bottom: 1px solid #ccc;
+    }
+
+    nav h3 {
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--blue1), var(--blue2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      user-select: none;
+      font-size: 1.5rem;
     }
 
     nav a {
-      color: #00ffff;
-      text-decoration: none;
+      color: var(--text-dark);
       margin: 0 1rem;
+      font-weight: 500;
+      position: relative;
+      overflow: hidden;
       transition: color 0.3s;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    body.light nav a {
+      color: var(--text-light);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue1), var(--blue2));
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      width: 0%;
+      opacity: 0;
+      transition: width 0.28s, opacity 0.28s;
     }
 
     nav a:hover {
-      color: #ff00ff;
+      color: var(--blue1);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+      opacity: 1;
     }
 
     section {
-      padding: 4rem 2rem;
+      padding: 5rem 2rem;
       max-width: 1200px;
       margin: auto;
+      position: relative;
+      transition: color 0.5s;
     }
 
     h2 {
       text-align: center;
       font-size: 2.5rem;
       margin-bottom: 2rem;
-      color: #00ffff;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--blue1), var(--blue2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      user-select: none;
     }
 
     .card-box {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 1.5rem;
-      border-radius: 16px;
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
+      backdrop-filter: blur(10px);
+      background: var(--card-bg-dark);
+      border-radius: 18px;
+      box-shadow: 0 10px 36px var(--shadow-dark);
+      border: 1px solid rgba(113 113 226 / 0.15);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.25s, transform 0.25s, background 0.5s;
+      cursor: default;
+    }
+
+    body.light .card {
+      background: var(--card-bg-light);
+      box-shadow: 0 10px 36px var(--shadow-light);
+      border: 1px solid rgba(150, 150, 150, 0.15);
+      color: var(--text-light);
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+      box-shadow: 0 14px 30px 2px rgba(36, 206, 230, 0.22), 0 1.5px 14px 1px #40248433;
+      transform: translateY(-7px) scale(1.033);
     }
 
     .skills {
@@ -90,102 +169,233 @@
     }
 
     .skill-ring {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 4px solid #00ffff;
+      width: 112px;
+      height: 112px;
+      border-radius: 22px;
+      background: rgba(39, 55, 105, 0.41);
+      border: 2.5px solid #39e9ff66;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      background: rgba(255, 255, 255, 0.05);
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 0 0 rgba(39, 233, 255, 0.10);
+      position: relative;
+      transition: border-color 0.25s, box-shadow 0.32s, transform 0.33s cubic-bezier(.15, .83, .56, 1);
+      cursor: pointer;
     }
 
-    .skill-ring:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    body.light .skill-ring {
+      background: #fff;
+      border-color: #6a94ff88;
+      box-shadow: 0 0 12px 0 #6a94ff33;
     }
 
     .skill-ring i {
-      font-size: 2rem;
+      font-size: 2.5rem;
       margin-bottom: 0.5rem;
+      color: var(--blue1);
+      text-shadow: 0 2px 6px #746cff33;
+      transition: color 0.3s;
     }
 
     .skill-ring span {
       font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+      color: #eee;
+    }
+
+    body.light .skill-ring span {
+      color: var(--text-light);
+    }
+
+    .skill-ring:hover {
+      border-color: var(--blue1);
+      box-shadow: 0 6px 28px 0px #39e9ff28, 0 1.5px 14px 0 #746cff38;
+      transform: scale(1.09) rotate(-2deg);
     }
 
     .contact-box {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      align-items: center;
+      gap: 2rem;
     }
 
     .contact-details {
+      gap: 2.2rem;
+      color: var(--blue1);
+      font-size: 1.1rem;
       display: flex;
-      gap: 2rem;
-      justify-content: center;
-      align-items: center;
       flex-wrap: wrap;
+      justify-content: center;
     }
 
     .contact-details div {
+      gap: 0.4rem;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      color: #00ffff;
-      font-size: 1.1rem;
+      white-space: nowrap;
     }
 
     form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
       max-width: 500px;
       width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(39, 233, 255, 0.07);
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      transition: background 0.5s;
     }
 
-    input, textarea {
-      padding: 0.75rem;
+    body.light form {
+      background: var(--input-bg-light);
+      box-shadow: 0 2px 12px var(--shadow-light);
+      color: var(--text-light);
+    }
+
+    input,
+    textarea {
+      padding: 0.8rem;
       border-radius: 8px;
-      border: none;
-      background: #1a1a1a;
+      border: 1.5px solid #39e9ff44;
+      background: var(--input-bg-dark);
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      margin-bottom: 5px;
+      transition: box-shadow 0.23s, border-color 0.2s, background 0.5s, color 0.5s;
+      resize: vertical;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body.light input,
+    body.light textarea {
+      background: var(--input-bg-light);
+      color: var(--text-light);
+      border: 1.5px solid var(--blue2);
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--blue2);
+      box-shadow: 0 0 8px #746cff33;
+      background: var(--input-bg-dark);
       color: #fff;
     }
 
+    body.light input:focus,
+    body.light textarea:focus {
+      background: var(--input-bg-light);
+      color: var(--text-light);
+      box-shadow: 0 0 10px var(--blue2);
+    }
+
     button {
-      padding: 0.75rem;
-      background: #00ffff;
-      color: #000;
+      padding: 0.9rem;
+      background: linear-gradient(90deg, var(--blue1) 40%, var(--blue2) 100%);
+      color: #101020;
+      font-weight: bold;
       border: none;
       border-radius: 8px;
-      font-weight: bold;
+      font-size: 1.09rem;
+      box-shadow: 0 2px 12px #746cff15;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: filter 0.25s, background 0.3s;
     }
 
     button:hover {
-      background: #00cccc;
+      filter: brightness(1.14);
+      background: linear-gradient(90deg, var(--blue2) 40%, var(--blue1) 100%);
+      color: #fff;
     }
-.floating-heart {
-  position: fixed;
-  bottom: 0;
-  z-index: -1;
-  animation: floatUp ease-in infinite;
-  pointer-events: none;
-  user-select: none;
-}
 
-@keyframes floatUp {
-  0% {
-    transform: translateY(0) scale(1);
-  }
-  100% {
-    transform: translateY(-100vh) scale(1.5);
-  }
+    ::-webkit-scrollbar {
+      width: 8px;
+      background: #181830;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #39e9ff33;
+      border-radius: 6px;
+    }
+
+    /* Toggle Dark/Light Button */
+    #modeToggle {
+      cursor: pointer;
+      background: transparent;
+      border: 2px solid var(--blue1);
+      border-radius: 24px;
+      color: var(--blue1);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 6px 14px;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+      user-select: none;
+    }
+
+    #modeToggle:hover {
+      background: var(--blue1);
+      color: #101020;
+      border-color: var(--blue1);
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      nav div {
+        display: none;
+      }
+    }
+
+.stats-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.stat-card {
+  background: rgba(30,40,80,0.39);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(60,98,255,0.13);
+  border: 1px solid rgba(113,113,226,0.15);
+  min-width: 180px;
+  padding: 2rem 2.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.stat-card:hover {
+  box-shadow: 0 0 22px 8px #39e9ff33;
+  transform: translateY(-8px) scale(1.06);
+}
+.stat-number {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #39e9ff, #746cff 95%);
+  -webkit-background-clip: text;
+  color: transparent;
+  background-clip: text;
+  transition: color 0.4s;
+}
+.stat-label {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  color: #eee;
+  font-weight: 600;
+  text-align: center;
+}
+body.light .stat-card {
+  background: #fff;
+  color: #20223c;
+  box-shadow: 0 2px 12px rgba(0,0,100,0.10);
+  border: 1px solid #c4dbf8;
+}
+body.light .stat-label {
+  color: #212230;
 }
 
   </style>
@@ -203,11 +413,17 @@
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </div>
+    <button id="modeToggle" aria-label="Toggle dark/light mode">Light Mode</button>
   </nav>
 
   <section id="about" data-aos="fade-up">
     <h2>About Me</h2>
-    <p style="text-align:center; max-width:800px; margin:auto;">I’m Rathinavel R, a passionate cyber security enthusiast crafting innovative experiences through code and design. Motivated to work on the Security Operation Center</p>
+    <p style="text-align:center; max-width:800px; margin:auto;">
+      I’m Rathinavel R, a passionate cyber security enthusiast crafting innovative experiences through code and design.
+      Motivated and enthusiastic Cyber Security undergraduate student with a strong foundation in ethical hacking and soc analyst.
+Passionate and exploring innovative solutions in cybersecurity. Seeking to leverage technical skills and creative mindset to contribute
+effectively to cybersecurity projects and research.
+    </p>
   </section>
 
   <section id="education" data-aos="fade-up">
@@ -219,12 +435,10 @@
         <p>Specialization: Cyber Security</p>
         <p>Year: 2023 - 2027</p>
       </div>
-
-<div class="card">
-        <h3>RKR GRKS Matriculation higher secondary school</h3>
-        <p>udumalpet - 642002</p>
+      <div class="card">
+        <h3>RKR GRKS Matriculation Higher Secondary School</h3>
+        <p>Udumalpet - 642002</p>
       </div>
-
     </div>
   </section>
 
@@ -239,12 +453,51 @@
     </div>
   </section>
 
+
+<section id="stats" data-aos="fade-up">
+  <h2>My Coding Stats</h2>
+  <div class="stats-box">
+    <div class="stat-card">
+      <div class="stat-number" data-target="1247">0</div>
+      <div class="stat-label">Hours Coded</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" data-target="4">0</div>
+      <div class="stat-label">Projects</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" data-target="3">0</div>
+      <div class="stat-label">Hackathons</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" data-target="5">0</div>
+      <div class="stat-label">Certificates</div>
+    </div>
+  </div>
+</section>
+
   <section id="certificates" data-aos="fade-up">
     <h2>Certificates</h2>
     <div class="card-box">
       <div class="card">
-        <h3>Ethical Hacking</h3>
-        <p>Udemy Certificate - 2023</p>
+        <h3>Certified in Introduction to C </h3>
+        <p>SoloLearn 2023</p>
+      </div>
+      <div class="card">
+        <h3>Completed Defensive Security Intro </h3>
+        <p>TryHackme</p>
+      </div>
+      <div class="card">
+        <h3>Certified in basics of VAPT </h3>
+        <p>SKYLENA INFO TECHNOLOGY</p>
+      </div>
+      <div class="card">
+        <h3>Completed Linux Fundamentals Part 1</h3>
+        <p>TryHackme</p>
+      </div>
+      <div class="card">
+        <h3>Certification in INNO BLITZ HACKATHON 1.0</h3>
+        <p>Sri Ramakrishna Engineering College</p>
       </div>
     </div>
   </section>
@@ -266,7 +519,7 @@
       </div>
       <div class="card">
         <h3>Cyber Security Vulnerability Checker</h3>
-        <p>To find Vulnerability on web Applications</p>
+        <p>To find Vulnerability on web Applications.</p>
       </div>
     </div>
   </section>
@@ -274,64 +527,123 @@
   <section id="skills" data-aos="fade-up">
     <h2>Skills</h2>
     <div class="skills">
-      <div class="skill-ring"><i data-lucide="code"></i><span>Python</span></div>
-      <div class="skill-ring"><i data-lucide="shield"></i><span>Cyber Security</span></div>
-      <div class="skill-ring"><i data-lucide="gamepad"></i><span>Game Dev</span></div>
-      <div class="skill-ring"><i data-lucide="cpu"></i><span>Java</span></div>
-      <div class="skill-ring"><i data-lucide="globe"></i><span>Web Dev</span></div>
-      <div class="skill-ring"><i data-lucide="bike"></i><span>Rider</span></div>
-      <div class="skill-ring"><i data-lucide="speech"></i><span>Communication</span></div>
-      <div class="skill-ring"><i data-lucide="hourglass"></i><span>Time<br> Management</span></div>
-      <div class="skill-ring"><i data-lucide="bug-off"></i><span>Bug Bountry</span></div>
+      <div class="skill-ring" tabindex="0" aria-label="Python skill">
+        <i data-lucide="code"></i><span>Python</span>
+      </div>
+      <div class="skill-ring" tabindex="0" aria-label="Cyber Security skill">
+        <i data-lucide="shield"></i><span>Cyber Security</span>
+      </div>
+      <div class="skill-ring" tabindex="0" aria-label="Game Development skill">
+        <i data-lucide="gamepad"></i><span>Game Dev</span>
+      </div>
+      <div class="skill-ring" tabindex="0" aria-label="Java skill">
+        <i data-lucide="cpu"></i><span>Java</span>
+      </div>
+      <div class="skill-ring" tabindex="0" aria-label="Web Development skill">
+        <i data-lucide="globe"></i><span>Web Dev</span>
+      </div>
+      <div class="skill-ring" tabindex="0" aria-label="Riding skill">
+        <i data-lucide="bike"></i><span>Rider</span>
+      </div>
+      <div class="skill-ring" tabindex="0" aria-label="Communication skill">
+        <i data-lucide="speech"></i><span>Communication</span>
+      </div>
+      <div class="skill-ring" tabindex="0" aria-label="Time management skill">
+        <i data-lucide="hourglass"></i><span>Time<br />Management</span>
+      </div>
+      <div class="skill-ring" tabindex="0" aria-label="Bug bounty skill">
+        <i data-lucide="bug-off"></i><span>Bug Bounty</span>
+      </div>
     </div>
   </section>
+
+
 
   <section id="contact" data-aos="fade-up">
     <h2>Contact</h2>
     <div class="contact-box">
-      <div class="contact-details">
-        <div><i data-lucide="mail"></i> rathinavelrbr@gmail.com</div>
-        <div><i data-lucide="phone"></i> 6381768287</div>
-        <div><i data-lucide="linkedin"></i> Rathinavel R</div>
-        <div><i data-lucide="github"></i> Rathinavel7010</div>
-      </div>
-      <form>
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea rows="5" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </div>
+      <div class="contact-details" role="list">
+        <div role="listitem"><i data-lucide="mail"></i> rathinavelrbr@gmail.com</div>
+        <div role="listitem"><i data-lucide="phone"></i> 6381768287</div>
+        <div role="listitem"><i data-lucide="linkedin"></i> Rathinavel R</div>
+        <div role="listitem"><i data-lucide="github"></i> Rathinavel7010</div>
   </section>
 
   <script>
-    AOS.init();
+    // Initialize AOS scroll animations
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out-cubic',
+      once: true,
+    });
+
+    // Initialize Lucide icons
     lucide.createIcons();
+
+    // Dark/Light mode toggle logic
+    const modeToggle = document.getElementById('modeToggle');
+    const body = document.body;
+
+    function updateToggleText() {
+      modeToggle.textContent = body.classList.contains('light') ? 'Dark Mode' : 'Light Mode';
+    }
+
+    modeToggle.addEventListener('click', () => {
+      body.classList.toggle('light');
+      updateToggleText();
+    });
+
+    updateToggleText();
+
+    // Optional: Smooth scroll for anchor links
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetID = this.getAttribute('href').slice(1);
+        const targetSection = document.getElementById(targetID);
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+// COUNTER ANIMATION FOR STATS SECTION
+function animateStats() {
+  const counters = document.querySelectorAll('.stat-number');
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-target');
+      const count = +counter.innerText;
+      const increment = Math.max(1, Math.ceil(target / 120));
+
+      if (count < target) {
+        counter.innerText = count + increment > target ? target : count + increment;
+        setTimeout(updateCount, 12);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    // Start counting only if not already at target
+    if (counter.innerText != counter.getAttribute('data-target')) {
+      updateCount();
+    }
+  });
+}
+
+// Use IntersectionObserver to trigger animation on scroll to section
+const statSection = document.getElementById('stats');
+let statsPlayed = false;
+if (statSection) {
+  const observer = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting && !statsPlayed) {
+      animateStats();
+      statsPlayed = true;
+    }
+  }, { threshold: 0.4 });
+  observer.observe(statSection);
+}
+
   </script>
-<!-- Include this just before the closing </body> tag -->
-<script>
-  const colors = ['#ff4d6d', '#ffb3c6', '#ff94c2', '#ffc6ff', '#ff6f91'];
-
-  function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("floating-heart");
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
-    heart.style.opacity = Math.random();
-    heart.style.fontSize = (Math.random() * 10 + 10) + "px";
-    heart.style.color = colors[Math.floor(Math.random() * colors.length)];
-    heart.innerHTML = "❤";
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-      heart.remove();
-    }, 5000);
-  }
-
-  setInterval(createHeart, 300);
-</script>
-
 </body>
 
 </html>
-
