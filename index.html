@@ -35,7 +35,6 @@
       box-sizing: border-box;
     }
 
-    /* Animated Gradient Background */
     body {
       background: linear-gradient(-45deg, #0a0a1a, #1a0a2e, #16213e, #0f3460);
       background-size: 400% 400%;
@@ -61,7 +60,6 @@
       color: var(--text-light);
     }
 
-    /* Particle Canvas */
     #particles-canvas {
       position: fixed;
       top: 0;
@@ -73,7 +71,6 @@
       opacity: 0.4;
     }
 
-    /* Floating Orbs */
     .orb {
       position: fixed;
       border-radius: 50%;
@@ -117,7 +114,6 @@
       66% { transform: translate(-50px, 80px) scale(0.9); }
     }
 
-    /* Glassmorphism Nav with Backdrop Blur */
     nav {
       background: rgba(10, 10, 26, 0.6);
       backdrop-filter: blur(20px) saturate(180%);
@@ -439,7 +435,6 @@
       transition: transform 0.6s;
     }
 
-    /* Stats Section */
     .stats-box {
       display: flex;
       flex-wrap: wrap;
@@ -543,7 +538,6 @@
       color: var(--text-light);
     }
 
-    /* Contact Section */
     .contact-box {
       gap: 2.5rem;
     }
@@ -576,6 +570,11 @@
       background: rgba(57, 233, 255, 0.2);
       transform: translateY(-5px);
       box-shadow: 0 10px 30px rgba(57, 233, 255, 0.3);
+    }
+
+    .contact-details a {
+      color: inherit;
+      text-decoration: none;
     }
 
     form {
@@ -685,7 +684,6 @@
       transform: translateY(-1px);
     }
 
-    /* Scrollbar */
     ::-webkit-scrollbar {
       width: 12px;
       background: rgba(10, 10, 26, 0.8);
@@ -701,7 +699,6 @@
       background: linear-gradient(135deg, var(--blue2), var(--purple));
     }
 
-    /* Toggle Button */
     #modeToggle {
       cursor: pointer;
       background: linear-gradient(135deg, rgba(57, 233, 255, 0.2), rgba(116, 108, 255, 0.2));
@@ -751,7 +748,6 @@
       z-index: 1;
     }
 
-    /* About Section Enhancement */
     #about p {
       text-align: center;
       max-width: 900px;
@@ -789,7 +785,6 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* Mouse Follower */
     .cursor-dot {
       width: 8px;
       height: 8px;
@@ -814,7 +809,80 @@
       opacity: 0.5;
     }
 
-    /* Responsive */
+    /* Area of Interest styles */
+    .interest-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .interest-item {
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, rgba(30, 40, 80, 0.5), rgba(50, 60, 100, 0.3));
+      backdrop-filter: blur(15px);
+      border-radius: 16px;
+      border: 1px solid rgba(113, 113, 226, 0.2);
+      box-shadow: 0 8px 32px rgba(57, 233, 255, 0.15);
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    body.light .interest-item {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 248, 255, 0.6));
+      box-shadow: 0 8px 32px rgba(116, 108, 255, 0.15);
+    }
+
+    .interest-item:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(57, 233, 255, 0.3);
+      border-color: rgba(57, 233, 255, 0.5);
+    }
+
+    /* Achievements & Extracurricular */
+    .achievement-list {
+      max-width: 900px;
+      margin: auto;
+      list-style: none;
+      padding: 0;
+    }
+
+    .achievement-list li {
+      padding: 1.2rem 2rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, rgba(30, 40, 80, 0.4), rgba(50, 60, 100, 0.3));
+      backdrop-filter: blur(15px);
+      border-radius: 16px;
+      border: 1px solid rgba(113, 113, 226, 0.2);
+      box-shadow: 0 4px 16px rgba(57, 233, 255, 0.1);
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      position: relative;
+      padding-left: 3rem;
+    }
+
+    body.light .achievement-list li {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 248, 255, 0.6));
+      box-shadow: 0 4px 16px rgba(116, 108, 255, 0.1);
+    }
+
+    .achievement-list li::before {
+      content: '⚡';
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.3rem;
+    }
+
+    .achievement-list li:hover {
+      transform: translateX(10px);
+      box-shadow: 0 8px 24px rgba(57, 233, 255, 0.25);
+    }
+
     @media (max-width: 768px) {
       nav > div {
         display: none;
@@ -843,7 +911,6 @@
       }
     }
 
-    /* Ripple Effect on Click */
     .ripple {
       position: absolute;
       border-radius: 50%;
@@ -879,11 +946,13 @@
     <h3>Rathinavel R</h3>
     <div>
       <a href="#about">About</a>
+      <a href="#interests">Interests</a>
       <a href="#education">Education</a>
       <a href="#internships">Internships</a>
-      <a href="#certificates">Certificates</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#achievements">Achievements</a>
       <a href="#contact">Contact</a>
     </div>
     <button id="modeToggle" aria-label="Toggle dark/light mode"><span>Light Mode</span></button>
@@ -892,25 +961,43 @@
   <section id="about" data-aos="fade-up" data-aos-duration="1000">
     <h2>About Me</h2>
     <p>
-      I'm Rathinavel R, a passionate cyber security enthusiast crafting innovative experiences through code and design.
-      Motivated and enthusiastic Cyber Security undergraduate student with a strong foundation in ethical hacking and soc analyst.
+      I'm Rathinavel R, a motivated and enthusiastic Cyber Security student with a strong foundation in security operation centre analyst.
       Passionate and exploring innovative solutions in cybersecurity. Seeking to leverage technical skills and creative mindset to contribute
       effectively to cybersecurity projects and research.
     </p>
+  </section>
+
+  <section id="interests" data-aos="fade-up" data-aos-duration="1000">
+    <h2>Area of Interest</h2>
+    <div class="interest-list">
+      <div class="interest-item" data-aos="zoom-in" data-aos-delay="100">
+        <i data-lucide="monitor" style="width:20px;height:20px;vertical-align:middle;margin-right:8px;"></i>Security Operation Centre [ L1 ]
+      </div>
+      <div class="interest-item" data-aos="zoom-in" data-aos-delay="200">
+        <i data-lucide="zap" style="width:20px;height:20px;vertical-align:middle;margin-right:8px;"></i>Incident Response Automation
+      </div>
+      <div class="interest-item" data-aos="zoom-in" data-aos-delay="300">
+        <i data-lucide="search" style="width:20px;height:20px;vertical-align:middle;margin-right:8px;"></i>Threat Hunting & Log Analysis
+      </div>
+    </div>
   </section>
 
   <section id="education" data-aos="fade-up" data-aos-duration="1000">
     <h2>Education</h2>
     <div class="card-box">
       <div class="card" data-aos="flip-left" data-aos-delay="100">
-        <h3>B.E. Computer Science & Engineering</h3>
-        <p>Dr. Mahalingam College of Engineering and Technology</p>
-        <p>Specialization: Cyber Security</p>
-        <p>Year: 2023 - 2027</p>
+        <h3>B.E. Computer Science with Cyber Security</h3>
+        <p>Dr. Mahalingam College of Engineering and Technology, Anna University, Pollachi</p>
+        <p>Year: 2023 – 2027</p>
+        <p>CGPA: 7.8 (Till 6th Sem)</p>
       </div>
       <div class="card" data-aos="flip-left" data-aos-delay="200">
-        <h3>RKR GRKS Matriculation Higher Secondary School</h3>
-        <p>Udumalpet - 642002</p>
+        <h3>HSC</h3>
+        <p>RKR GRKS Matriculation Higher Secondary School, Udumalpet</p>
+      </div>
+      <div class="card" data-aos="flip-left" data-aos-delay="300">
+        <h3>SSLC</h3>
+        <p>Mangalam Matriculation Higher Secondary School, Anthiyur</p>
       </div>
     </div>
   </section>
@@ -919,57 +1006,33 @@
     <h2>Internships</h2>
     <div class="card-box">
       <div class="card" data-aos="zoom-in" data-aos-delay="100">
-        <h3>Cyber Security Intern</h3>
-        <p>Skylena Info Tech</p>
-        <p>Duration: 15 days</p>
+        <h3>Cybersecurity Intern</h3>
+        <p>Skylena InfoTech</p>
+        <p>Duration: 11.06.2025 – 08.09.2024</p>
+        <p style="margin-top:0.8rem;">• Worked on Ethical Hacking in VAPT and SOC</p>
+        <p>• Collaborated with a team of cyber security students to enhance ethical hacking skills</p>
       </div>
     </div>
   </section>
 
   <section id="stats" data-aos="fade-up" data-aos-duration="1000">
-    <h2>My Coding Stats</h2>
+    <h2>My Stats</h2>
     <div class="stats-box">
       <div class="stat-card" data-aos="zoom-in-up" data-aos-delay="100">
-        <div class="stat-number" data-target="1247">0</div>
-        <div class="stat-label">Hours Coded</div>
-      </div>
-      <div class="stat-card" data-aos="zoom-in-up" data-aos-delay="200">
-        <div class="stat-number" data-target="4">0</div>
+        <div class="stat-number" data-target="3">0</div>
         <div class="stat-label">Projects</div>
       </div>
+      <div class="stat-card" data-aos="zoom-in-up" data-aos-delay="200">
+        <div class="stat-number" data-target="1">0</div>
+        <div class="stat-label">Patents</div>
+      </div>
       <div class="stat-card" data-aos="zoom-in-up" data-aos-delay="300">
-        <div class="stat-number" data-target="3">0</div>
-        <div class="stat-label">Hackathons</div>
+        <div class="stat-number" data-target="80">0</div>
+        <div class="stat-label">Portswigger Labs</div>
       </div>
       <div class="stat-card" data-aos="zoom-in-up" data-aos-delay="400">
-        <div class="stat-number" data-target="5">0</div>
+        <div class="stat-number" data-target="8">0</div>
         <div class="stat-label">Certificates</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="certificates" data-aos="fade-up" data-aos-duration="1000">
-    <h2>Certificates</h2>
-    <div class="card-box">
-      <div class="card" data-aos="fade-right" data-aos-delay="100">
-        <h3>Certified in Introduction to C</h3>
-        <p>SoloLearn 2023</p>
-      </div>
-      <div class="card" data-aos="fade-right" data-aos-delay="200">
-        <h3>Completed Defensive Security Intro</h3>
-        <p>TryHackme</p>
-      </div>
-      <div class="card" data-aos="fade-left" data-aos-delay="300">
-        <h3>Certified in basics of VAPT</h3>
-        <p>SKYLENA INFO TECHNOLOGY</p>
-      </div>
-      <div class="card" data-aos="fade-left" data-aos-delay="400">
-        <h3>Completed Linux Fundamentals Part 1</h3>
-        <p>TryHackme</p>
-      </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="500">
-        <h3>Certification in INNO BLITZ HACKATHON 1.0</h3>
-        <p>Sri Ramakrishna Engineering College</p>
       </div>
     </div>
   </section>
@@ -978,55 +1041,130 @@
     <h2>Projects</h2>
     <div class="card-box">
       <div class="card" data-aos="flip-up" data-aos-delay="100">
-        <h3>Space to Earth</h3>
-        <p>2D Game developed in Godot. Published on Play Store.</p>
+        <h3>Smart Malware Detection using Images and Deep Learning</h3>
+        <p>Developed a deep learning model to detect malware using image-based file representations. Improved classification accuracy through pattern recognition techniques.</p>
+        <p style="margin-top:0.8rem; opacity:0.7; font-size:0.95rem;">📅 04.03.2025 – 24.03.2025</p>
       </div>
       <div class="card" data-aos="flip-up" data-aos-delay="200">
-        <h3>Smart Irrigation System</h3>
-        <p>IoT-based project for efficient water use in agriculture.</p>
+        <h3>[PATENT] Boot Shield: UEFI Firmware Analysis & Protection System</h3>
+        <p>Designed a hardware-based solution to analyze and protect UEFI firmware from low-level attacks. Enhanced system security by focusing on boot-level threat detection and prevention.</p>
+        <p style="margin-top:0.8rem; opacity:0.7; font-size:0.95rem;">📅 01.08.2025 – 18.09.2025</p>
       </div>
       <div class="card" data-aos="flip-up" data-aos-delay="300">
-        <h3>Key Logger</h3>
-        <p>IoT-based project for efficient water use in agriculture.</p>
-      </div>
-      <div class="card" data-aos="flip-up" data-aos-delay="400">
-        <h3>Cyber Security Vulnerability Checker</h3>
-        <p>To find Vulnerability on web Applications.</p>
+        <h3>Security Onion SOC Lab – Real-time SOC Monitoring & Incident Response</h3>
+        <p>Deployed a Security Onion SOC lab environment to monitor network traffic, analyze logs, investigate security alerts, and perform incident triage in a simulated enterprise network.</p>
+        <p style="margin-top:0.8rem; opacity:0.7; font-size:0.95rem;">📅 07.04.2026 – 10.04.2026</p>
       </div>
     </div>
   </section>
 
   <section id="skills" data-aos="fade-up" data-aos-duration="1000">
-    <h2>Skills</h2>
+    <h2>Technical Skills</h2>
     <div class="skills">
       <div class="skill-ring" tabindex="0" aria-label="Python skill" data-aos="zoom-in" data-aos-delay="100">
         <i data-lucide="code"></i><span>Python</span>
       </div>
-      <div class="skill-ring" tabindex="0" aria-label="Cyber Security skill" data-aos="zoom-in" data-aos-delay="150">
-        <i data-lucide="shield"></i><span>Cyber Security</span>
+      <div class="skill-ring" tabindex="0" aria-label="C language skill" data-aos="zoom-in" data-aos-delay="130">
+        <i data-lucide="file-code"></i><span>C</span>
       </div>
-      <div class="skill-ring" tabindex="0" aria-label="Game Development skill" data-aos="zoom-in" data-aos-delay="200">
-        <i data-lucide="gamepad"></i><span>Game Dev</span>
+      <div class="skill-ring" tabindex="0" aria-label="C++ skill" data-aos="zoom-in" data-aos-delay="160">
+        <i data-lucide="file-code-2"></i><span>C++</span>
       </div>
-      <div class="skill-ring" tabindex="0" aria-label="Java skill" data-aos="zoom-in" data-aos-delay="250">
-        <i data-lucide="cpu"></i><span>Java</span>
+      <div class="skill-ring" tabindex="0" aria-label="Kali Linux skill" data-aos="zoom-in" data-aos-delay="190">
+        <i data-lucide="terminal"></i><span>Kali Linux</span>
       </div>
-      <div class="skill-ring" tabindex="0" aria-label="Web Development skill" data-aos="zoom-in" data-aos-delay="300">
-        <i data-lucide="globe"></i><span>Web Dev</span>
+      <div class="skill-ring" tabindex="0" aria-label="Burp Suite skill" data-aos="zoom-in" data-aos-delay="220">
+        <i data-lucide="bug"></i><span>Burp Suite</span>
       </div>
-      <div class="skill-ring" tabindex="0" aria-label="Riding skill" data-aos="zoom-in" data-aos-delay="350">
-        <i data-lucide="bike"></i><span>Rider</span>
+      <div class="skill-ring" tabindex="0" aria-label="Wireshark skill" data-aos="zoom-in" data-aos-delay="250">
+        <i data-lucide="activity"></i><span>Wireshark</span>
       </div>
-      <div class="skill-ring" tabindex="0" aria-label="Communication skill" data-aos="zoom-in" data-aos-delay="400">
-        <i data-lucide="speech"></i><span>Communication</span>
+      <div class="skill-ring" tabindex="0" aria-label="Nmap skill" data-aos="zoom-in" data-aos-delay="280">
+        <i data-lucide="radar"></i><span>Nmap</span>
       </div>
-      <div class="skill-ring" tabindex="0" aria-label="Time management skill" data-aos="zoom-in" data-aos-delay="450">
-        <i data-lucide="hourglass"></i><span>Time<br />Management</span>
+      <div class="skill-ring" tabindex="0" aria-label="Metasploit skill" data-aos="zoom-in" data-aos-delay="310">
+        <i data-lucide="shield-alert"></i><span>Metasploit</span>
       </div>
-      <div class="skill-ring" tabindex="0" aria-label="Bug bounty skill" data-aos="zoom-in" data-aos-delay="500">
-        <i data-lucide="bug-off"></i><span>Bug Bounty</span>
+      <div class="skill-ring" tabindex="0" aria-label="Splunk skill" data-aos="zoom-in" data-aos-delay="340">
+        <i data-lucide="database"></i><span>Splunk</span>
+      </div>
+      <div class="skill-ring" tabindex="0" aria-label="Security Onion skill" data-aos="zoom-in" data-aos-delay="370">
+        <i data-lucide="shield"></i><span>Security Onion</span>
+      </div>
+      <div class="skill-ring" tabindex="0" aria-label="OSINT skill" data-aos="zoom-in" data-aos-delay="400">
+        <i data-lucide="search"></i><span>OSINT</span>
+      </div>
+      <div class="skill-ring" tabindex="0" aria-label="Networking skill" data-aos="zoom-in" data-aos-delay="430">
+        <i data-lucide="network"></i><span>Networking</span>
       </div>
     </div>
+
+    <h2 style="margin-top:5rem;">Soft Skills</h2>
+    <div class="skills">
+      <div class="skill-ring" tabindex="0" aria-label="Analytical Thinking" data-aos="zoom-in" data-aos-delay="100">
+        <i data-lucide="brain"></i><span>Analytical<br/>Thinking</span>
+      </div>
+      <div class="skill-ring" tabindex="0" aria-label="Team Collaboration" data-aos="zoom-in" data-aos-delay="150">
+        <i data-lucide="users"></i><span>Team<br/>Collaboration</span>
+      </div>
+      <div class="skill-ring" tabindex="0" aria-label="Technical Communication" data-aos="zoom-in" data-aos-delay="200">
+        <i data-lucide="message-circle"></i><span>Technical<br/>Communication</span>
+      </div>
+      <div class="skill-ring" tabindex="0" aria-label="Continuous Learning" data-aos="zoom-in" data-aos-delay="250">
+        <i data-lucide="book-open"></i><span>Continuous<br/>Learning</span>
+      </div>
+      <div class="skill-ring" tabindex="0" aria-label="Problem Solving" data-aos="zoom-in" data-aos-delay="300">
+        <i data-lucide="lightbulb"></i><span>Problem<br/>Solving</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="certificates" data-aos="fade-up" data-aos-duration="1000">
+    <h2>Certifications</h2>
+    <div class="card-box">
+      <div class="card" data-aos="fade-right" data-aos-delay="100">
+        <h3>CSA (Certified SOC Analyst)</h3>
+        <p>EC-COUNCIL (In Progress)</p>
+      </div>
+      <div class="card" data-aos="fade-right" data-aos-delay="200">
+        <h3>Networking Essentials</h3>
+        <p>Cisco Networking Academy</p>
+      </div>
+      <div class="card" data-aos="fade-left" data-aos-delay="300">
+        <h3>Defensive Security</h3>
+        <p>TryHackMe</p>
+      </div>
+      <div class="card" data-aos="fade-left" data-aos-delay="400">
+        <h3>Security Operation Centre Fundamentals</h3>
+        <p>TryHackMe</p>
+      </div>
+      <div class="card" data-aos="fade-right" data-aos-delay="500">
+        <h3>Offensive Security</h3>
+        <p>TryHackMe</p>
+      </div>
+      <div class="card" data-aos="fade-right" data-aos-delay="600">
+        <h3>INNO BLITZ HACKATHON 1.0</h3>
+        <p>Sri Ramakrishna Engineering College</p>
+      </div>
+      <div class="card" data-aos="fade-left" data-aos-delay="700">
+        <h3>OWASP Coimbatore Chapter Workshop</h3>
+        <p>KPR Institute of Engineering and Technology</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements" data-aos="fade-up" data-aos-duration="1000">
+    <h2>Achievements</h2>
+    <ul class="achievement-list">
+      <li data-aos="fade-right" data-aos-delay="100">Recognized for research and innovation in UEFI firmware security and boot-level threat protection.</li>
+      <li data-aos="fade-right" data-aos-delay="200">Solved 80+ Labs in Portswigger</li>
+    </ul>
+
+    <h2 style="margin-top:5rem;">Extracurricular Activities</h2>
+    <ul class="achievement-list">
+      <li data-aos="fade-left" data-aos-delay="100">Participated in inter-college events</li>
+      <li data-aos="fade-left" data-aos-delay="200">Worked in National Service Scheme, Studio MCET, FAC Doodlers</li>
+    </ul>
   </section>
 
   <section id="contact" data-aos="fade-up" data-aos-duration="1000">
@@ -1034,16 +1172,16 @@
     <div class="contact-box">
       <div class="contact-details" role="list">
         <div role="listitem" data-aos="fade-right" data-aos-delay="100">
-          <i data-lucide="mail"></i> rathinavelrbr@gmail.com
+          <i data-lucide="mail"></i> <a href="mailto:rathinavelrbr@gmail.com">rathinavelrbr@gmail.com</a>
         </div>
         <div role="listitem" data-aos="fade-right" data-aos-delay="200">
-          <i data-lucide="phone"></i> 6381768287
+          <i data-lucide="phone"></i> <a href="tel:+916381768287">+91 6381768287</a>
         </div>
         <div role="listitem" data-aos="fade-left" data-aos-delay="300">
-          <i data-lucide="linkedin"></i> Rathinavel R
+          <i data-lucide="linkedin"></i> <a href="https://www.linkedin.com/in/RathinavelR" target="_blank">Rathinavel R</a>
         </div>
         <div role="listitem" data-aos="fade-left" data-aos-delay="400">
-          <i data-lucide="github"></i> Rathinavel7010
+          <i data-lucide="github"></i> <a href="https://github.com/Rathinavel7010" target="_blank">Rathinavel7010</a>
         </div>
       </div>
     </div>
